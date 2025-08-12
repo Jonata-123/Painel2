@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="Dashboard">
+      <div class="card-login">
+        <h1>Área Restrita</h1>
+        <p id="welcome"></p>
+        <button id="logoutBtn" class="btn">Sair</button>
+      </div>
+    </div>
+
+    <script>
+      // Verifica se está logado
+      const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (!loggedUser) {
+        // Se não estiver logado, volta para login
+        window.location.href = "index.html";
+      } else {
+        document.getElementById(
+          "welcome"
+        ).textContent = `Bem-vindo, ${loggedUser.name}!`;
+      }
+
+      // Logout
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("loggedUser");
+        window.location.href = "index.html";
+      });
+    </script>
+  </body>
+</html>

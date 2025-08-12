@@ -10,8 +10,8 @@ body {
   height: 100%;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial;
-  background: linear-gradient(135deg, #0f172a 0%, #0b2545 100%);
-  color: #0f172a;
+  background: linear-gradient(#ffffff);
+  color: #ffffff;
 }
 
 .wrap {
@@ -34,6 +34,7 @@ body {
   box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
   padding: 28px;
   overflow: hidden;
+  align-items: right;
 }
 
 .brand {
@@ -116,8 +117,8 @@ input:focus {
   padding: 12px;
   border-radius: 10px;
   border: none;
-  background: linear-gradient(90deg, #2563eb, #7c3aed);
-  color: white;
+  background: linear-gradient(#59bd67);
+  color: rgb(58, 56, 56);
   font-weight: 600;
   cursor: pointer;
   font-size: 15px;
@@ -156,6 +157,30 @@ input:focus {
   font-size: 12px;
   color: #64748b;
   margin-top: 6px;
+}
+
+/* Dashboard Styles */
+
+.Dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.card-login {
+  width: 100%;
+  max-width: 500px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(250, 250, 250, 0.96)
+  );
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+  padding: 28px;
 }
 
 @media (max-width: 460px) {

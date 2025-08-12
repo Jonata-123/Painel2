@@ -4,7 +4,6 @@ const FAKE_USERS = [
   { email: "user@exemplo.com", password: "senha123", name: "Usuário Teste" },
 ];
 
-// --- Elementos ---
 const loginForm = document.getElementById("loginForm");
 const emailInput = document.getElementById("email");
 const pwdInput = document.getElementById("password");
@@ -14,7 +13,7 @@ const msgSuccess = document.getElementById("msg-success");
 const emailError = document.getElementById("email-error");
 const pwdError = document.getElementById("pwd-error");
 
-// Inicializar: se existe "lembrar", preencher o email
+// Preenche email salvo
 window.addEventListener("DOMContentLoaded", () => {
   const saved = localStorage.getItem("rememberedUser");
   if (saved) {
@@ -24,9 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
         emailInput.value = obj.email;
         rememberCheckbox.checked = true;
       }
-    } catch (e) {
-      /* ignore */
-    }
+    } catch {}
   }
 });
 
@@ -38,7 +35,6 @@ togglePwdBtn.addEventListener("click", () => {
   togglePwdBtn.setAttribute("aria-pressed", String(isHidden));
 });
 
-// Validação simples
 function validateForm() {
   let ok = true;
 
@@ -59,7 +55,6 @@ function validateForm() {
   return ok;
 }
 
-// Simulação de autenticação
 function authenticate(email, password) {
   const found = FAKE_USERS.find(
     (u) =>
@@ -70,7 +65,6 @@ function authenticate(email, password) {
   });
 }
 
-// Submissão
 loginForm.addEventListener("submit", async (ev) => {
   ev.preventDefault();
   msgSuccess.style.display = "none";
@@ -93,8 +87,8 @@ loginForm.addEventListener("submit", async (ev) => {
       return;
     }
 
-    msgSuccess.style.display = "block";
-    msgSuccess.textContent = `Olá, ${user.name}! Login realizado com sucesso. (Simulação)`;
+    // Salva usuário logado
+    localStorage.setItem("loggedUser", JSON.stringify(user));
 
     if (rememberCheckbox.checked) {
       localStorage.setItem("rememberedUser", JSON.stringify({ email }));
@@ -102,10 +96,8 @@ loginForm.addEventListener("submit", async (ev) => {
       localStorage.removeItem("rememberedUser");
     }
 
-    setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Entrar";
-    }, 900);
+    // Redireciona para dashboard
+    window.location.href = "dashboard.html";
   } catch (err) {
     console.error(err);
     alert("Ocorreu um erro. Tente novamente.");
@@ -114,7 +106,7 @@ loginForm.addEventListener("submit", async (ev) => {
   }
 });
 
-// Esqueceu a senha
+// Esqueceu senha
 document.getElementById("forgot").addEventListener("click", (e) => {
   e.preventDefault();
   const email = prompt("Informe o seu email para receber instruções:");
