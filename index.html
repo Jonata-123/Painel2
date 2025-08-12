@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tela de Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card" role="main" aria-labelledby="login-title">
+        <div class="brand">
+          <h1 id="login-title">Bem-vindo de volta</h1>
+          <p>Faça login na sua conta</p>
+        </div>
+
+        <div
+          id="msg-success"
+          class="success"
+          role="status"
+          aria-live="polite"
+        ></div>
+
+        <form id="loginForm" autocomplete="on" novalidate>
+          <div>
+            <label for="email">Email</label>
+            <div class="input-group">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="seu@exemplo.com"
+                required
+                pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                aria-describedby="email-help"
+              />
+            </div>
+            <div id="email-error" class="error">Insira um email válido.</div>
+          </div>
+
+          <div>
+            <label for="password">Senha</label>
+            <div class="input-group">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="••••••••"
+                minlength="6"
+                required
+                aria-describedby="pwd-help"
+              />
+              <button
+                id="togglePwd"
+                class="pwd-toggle"
+                type="button"
+                aria-pressed="false"
+                aria-label="Mostrar senha"
+              >
+                Mostrar
+              </button>
+            </div>
+            <div id="pwd-error" class="error">
+              A senha deve ter ao menos 6 caracteres.
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 6px">
+            <label class="checkbox-label">
+              <input id="remember" type="checkbox" />
+              Lembrar-me
+            </label>
+            <a class="link" href="#" id="forgot">Esqueceu a senha?</a>
+          </div>
+
+          <div style="margin-top: 10px">
+            <button id="submitBtn" class="btn" type="submit">Entrar</button>
+          </div>
+
+          <div class="helper" style="margin-top: 10px">
+            Ainda não tem conta? <a class="link" href="#">Crie uma</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
